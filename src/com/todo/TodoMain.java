@@ -69,6 +69,7 @@ public class TodoMain {
 			default:
 				System.out.println("\nSystem: 명령어를 정확하게 입력하여주십시오. (도움말 - help)");
 				break;
+				
 			}
 			
 			if(isList) TodoUtil.listAll(l);
