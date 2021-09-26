@@ -61,7 +61,7 @@ public class TodoMain {
 			case "ls_date_desc":
 				l.sortByDate();
 				l.reverseList();
-				System.out.println("\\nSystem: 최신순으로 정렬하였습니다.");
+				System.out.println("\nSystem: 최신순으로 정렬하였습니다.");
 				isList = true;
 				break;
 			
@@ -71,6 +71,10 @@ public class TodoMain {
 			
 			case "find_cate":
 				TodoUtil.find_cate(l,sc.next());
+				break;
+				
+			case "ls_cate":
+				TodoUtil.listCate(l);
 				break;
 			
 			case "exit":
