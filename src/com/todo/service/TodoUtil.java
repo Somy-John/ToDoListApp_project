@@ -140,7 +140,7 @@ public class TodoUtil {
 
 	public static void listAll(TodoList l) {
 		System.out.println("");
-		System.out.println("<Todo List>");
+		System.out.printf("<전체 목록, 총 %d개>\n",l.getList().size());
 		int index = 0;
 		for (TodoItem item : l.getList()) {
 			index+=1;

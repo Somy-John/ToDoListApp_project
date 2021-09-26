@@ -72,7 +72,7 @@ public class TodoMain {
 			case "find_cate":
 				TodoUtil.find_cate(l,sc.next());
 				break;
-
+			
 			case "exit":
 				quit = true;
 				break;
