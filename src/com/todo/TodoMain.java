@@ -57,6 +57,21 @@ public class TodoMain {
 				System.out.println("\nSystem: 날짜순으로 정렬하였습니다.");
 				isList = true;
 				break;
+				
+			case "ls_date_desc":
+				l.sortByDate();
+				l.reverseList();
+				System.out.println("\\nSystem: 최신순으로 정렬하였습니다.");
+				isList = true;
+				break;
+			
+			case "find":
+				TodoUtil.find(l,sc.next());
+				break;
+			
+			case "find_cate":
+				TodoUtil.find_cate(l,sc.next());
+				break;
 
 			case "exit":
 				quit = true;
@@ -74,6 +89,7 @@ public class TodoMain {
 			
 			if(isList) TodoUtil.listAll(l);
 		} while (!quit);
+		sc.close();
 		TodoUtil.saveList(l, "todolist.txt");
 		System.out.println("\nSystem: 저장되었습니다.");
 	}
