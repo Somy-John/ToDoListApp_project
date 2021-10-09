@@ -246,7 +246,7 @@ public class TodoList {
 	}
 
 //	public void sortByName() {
-////		Collections.sort(list, new TodoSortByName());
+//		Collections.sort(list, new TodoSortByName());
 //		String sql = "SELECT * FROM student ORDER BY name;";
 //		System.out.println("");
 //
