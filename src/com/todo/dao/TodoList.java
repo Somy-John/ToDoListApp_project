@@ -225,7 +225,7 @@ public class TodoList {
 			stmt = conn.createStatement();
 			String sql = "SELECT * FROM list ORDER BY " + orderby;
 			if (ordering == 0)
-				sql += "desc";
+				sql += " desc";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				int id = rs.getInt("id");
