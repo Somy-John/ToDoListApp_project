@@ -9,6 +9,7 @@ public class TodoItem {
     private String desc;
     private String due_date;
     private String current_date;
+    private int id;
 
 
     public TodoItem(String category,String title, String desc,String due_date){
@@ -75,5 +76,13 @@ public class TodoItem {
 
 	public void setDue_date(String due_date) {
 		this.due_date = due_date;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
