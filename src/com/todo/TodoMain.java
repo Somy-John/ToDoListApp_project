@@ -13,14 +13,13 @@ public class TodoMain {
 		Scanner sc = new Scanner(System.in);
 		TodoList l = new TodoList();
 //		l.importData("todolist.txt");
-		boolean isList = false;
+//		boolean isList = false;
 		boolean quit = false;
 		
 //		TodoUtil.loadList(l, "todolist.txt");
 		Menu.displaymenu();
 		do {
 			Menu.prompt();
-			isList  = false;
 			String choice = sc.next();
 			switch (choice) {
 
@@ -40,31 +39,25 @@ public class TodoMain {
 				TodoUtil.listAll(l);
 				break;
 
-//			case "ls_name_asc":
-//				l.sortByName();
-//				System.out.println("\nSystem: 제목순으로 정렬하였습니다.");
-//				isList = true;
-//				break;
-//
-//			case "ls_name_desc":
-//				l.sortByName();
-//				l.reverseList();
-//				System.out.println("\nSystem: 제목역순으로 정렬하였습니다.");
-//				isList = true;
-//				break;
-//				
-//			case "ls_date":
-//				l.sortByDate();
-//				System.out.println("\nSystem: 날짜순으로 정렬하였습니다.");
-//				isList = true;
-//				break;
-//				
-//			case "ls_date_desc":
-//				l.sortByDate();
-//				l.reverseList();
-//				System.out.println("\nSystem: 최신순으로 정렬하였습니다.");
-//				isList = true;
-//				break;
+			case "ls_name_asc":
+				System.out.println("\nSystem: 제목순으로 정렬하였습니다.");
+				TodoUtil.listAll(l,"title",1);
+				break;
+
+			case "ls_name_desc":
+				System.out.println("\nSystem: 제목역순으로 정렬하였습니다.");
+				TodoUtil.listAll(l,"title",0);
+				break;
+				
+			case "ls_date":
+				System.out.println("\nSystem: 날짜순으로 정렬하였습니다.");
+				TodoUtil.listAll(l,"due_date",1);
+				break;
+				
+			case "ls_date_desc":
+				System.out.println("\nSystem: 최신순으로 정렬하였습니다.");
+				TodoUtil.listAll(l,"due_date",0);
+				break;
 			
 			case "find":
 				TodoUtil.find(l,sc.next());
@@ -91,11 +84,10 @@ public class TodoMain {
 				break;
 				
 			}
-			
-			if(isList) TodoUtil.listAll(l);
 		} while (!quit);
 		sc.close();
-		TodoUtil.saveList(l, "todolist.txt");
-		System.out.println("\nSystem: 저장되었습니다.");
+//		TodoUtil.saveList(l, "todolist.txt");
+//		System.out.println("\nSystem: 저장되었습니다.");
+		System.out.println("\nSystem:  Bye");
 	}
 }

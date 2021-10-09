@@ -44,6 +44,21 @@ public class TodoList {
 		}
 		return count;
 	}
+	
+	public boolean isDuplicate(String title) {
+		String sql = "SELECT * FROM list WHERE title = ?";
+		PreparedStatement pstmt;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 //	public void deleteItem(TodoItem t) {
 //		list.remove(t);
@@ -112,13 +127,13 @@ public class TodoList {
 		Statement stmt;
 		try {
 			stmt = conn.createStatement();
-			String sql = "SELECT « FROM List";
+			String sql = "SELECT * FROM List";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String category = rs.getString("category");
 				String title = rs.getString("title");
 				String description = rs.getString("memo");
+				String category = rs.getString("category");
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
 				TodoItem t = new TodoItem(title, description, category, due_date);
@@ -132,11 +147,11 @@ public class TodoList {
 		}
 		return list;
 	}
-	
+
 	public ArrayList<TodoItem> getList(String key) {
 		ArrayList<TodoItem> list = new ArrayList<TodoItem>();
 		PreparedStatement pstmt;
-		key = "%"+key+"%";
+		key = "%" + key + "%";
 		try {
 			String sql = "SELECT * FROM list WHERE title like ? or memo like ?";
 			pstmt = conn.prepareStatement(sql);
@@ -160,8 +175,8 @@ public class TodoList {
 		}
 		return list;
 	}
-	
-	public ArrayList<String> getCategories(){
+
+	public ArrayList<String> getCategories() {
 		ArrayList<String> list = new ArrayList<String>();
 		Statement stmt;
 		try {
@@ -170,6 +185,59 @@ public class TodoList {
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				list.add(rs.getString("category"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public ArrayList<TodoItem> getListCategory(String key) {
+		ArrayList<TodoItem> list = new ArrayList<TodoItem>();
+		PreparedStatement pstmt;
+		try {
+			String sql = "SELECT * FROM list WHERE category = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, key);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String title = rs.getString("title");
+				String description = rs.getString("memo");
+				String category = rs.getString("category");
+				String due_date = rs.getString("due_date");
+				String current_date = rs.getString("current_date");
+				TodoItem t = new TodoItem(title, description, category, due_date);
+				t.setId(id);
+				t.setCurrent_date(current_date);
+				list.add(t);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public ArrayList<TodoItem> getOrderedList(String orderby, int ordering) {
+		ArrayList<TodoItem> list = new ArrayList<TodoItem>();
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			String sql = "SELECT * FROM list ORDER BY " + orderby;
+			if (ordering == 0)
+				sql += "desc";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String title = rs.getString("title");
+				String description = rs.getString("memo");
+				String category = rs.getString("category");
+				String due_date = rs.getString("due_date");
+				String current_date = rs.getString("current_date");
+				TodoItem t = new TodoItem(title, description, category, due_date);
+				t.setId(id);
+				t.setCurrent_date(current_date);
+				list.add(t);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

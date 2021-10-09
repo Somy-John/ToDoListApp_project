@@ -23,11 +23,11 @@ public class TodoUtil {
 		sc.nextLine();
 		System.out.println("제목 >> ");
 		title = sc.next();
-//		if (l.isDuplicate(title)) {
-//			System.out.println("System: 제목은 중복될 수 없습니다.");
-//			sc.close();
-//			return;
-//		}
+		if (l.isDuplicate(title)) {
+			System.out.println("System: 제목은 중복될 수 없습니다.");
+			sc.close();
+			return;
+		}
 		sc.nextLine();
 		System.out.println("내용 >> ");
 		desc = sc.nextLine().trim();
@@ -153,13 +153,10 @@ public class TodoUtil {
 
 	public static void find_cate(TodoList l, String key) {
 		System.out.println("<카테고리 \"" + key + "\"의 검색 결과>");
-		int index = 0, count = 0;
-		for (TodoItem item : l.getList()) {
-			index += 1;
-			if (item.toString().substring(item.toString().indexOf("["), item.toString().indexOf("]")).contains(key)) {
-				System.out.println(index + ". " + item.toString());
-				count += 1;
-			}
+		int count = 0;
+		for (TodoItem item : l.getListCategory(key)) {
+			System.out.println(item.toString());
+			count ++;
 		}
 		System.out.printf("System: 총 %d개의 항목을 찾았습니다.\n", count);
 	}
@@ -168,6 +165,13 @@ public class TodoUtil {
 		System.out.println("");
 		System.out.printf("<전체 목록, 총 %d개>\n", l.getCount());
 		for (TodoItem item : l.getList()) {
+			System.out.println(item.toString());
+		}
+	}
+	
+	public static void listAll(TodoList l, String orderby, int ordering) {
+		System.out.printf("[전체 목록, 총 %d개]\n", l.getCount());
+		for (TodoItem item : l.getOrderedList(orderby, ordering)) {
 			System.out.println(item.toString());
 		}
 	}
@@ -185,24 +189,24 @@ public class TodoUtil {
 		System.out.printf("\nSystem: 총 %d개의 카테고리가 등록되어 있습니다.\n", count);
 	}
 
-	public static void saveList(TodoList l, String filename) {
-		File file = new File(filename);
-		if (!file.exists())
-			try {
-				file.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		FileWriter fw;
-		try {
-			fw = new FileWriter(file);
-			for (TodoItem item : l.getList())
-				fw.write(item.toSaveString());
-			fw.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	public static void saveList(TodoList l, String filename) {
+//		File file = new File(filename);
+//		if (!file.exists())
+//			try {
+//				file.createNewFile();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		FileWriter fw;
+//		try {
+//			fw = new FileWriter(file);
+//			for (TodoItem item : l.getList())
+//				fw.write(item.toSaveString());
+//			fw.close();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 //	public static void loadList(TodoList l, String filename) {
 //		File file = new File(filename);
