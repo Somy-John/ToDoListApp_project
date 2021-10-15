@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.todo.dao.TodoList;
 import com.todo.menu.Menu;
 import com.todo.service.TodoUtil;
+import com.todo.service.JSONHandler;
 
 public class TodoMain {
 	
@@ -89,6 +90,13 @@ public class TodoMain {
 				
 			case "complete_m":
 				TodoUtil.manageCompletion_m(l);
+				break;
+			case "make_JSON":
+				JSONHandler.serializeObject(l,sc.next());
+				break;
+				
+			case "get_JSON":
+				JSONHandler.deserializeObject(sc.next());
 				break;
 			
 			case "exit":

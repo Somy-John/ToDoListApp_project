@@ -5,7 +5,6 @@ public class Menu {
     {
         System.out.println();
         System.out.println("<ToDoList 관리 명령어 사용 방법>");
-        System.out.println("Multi-item 기능을 사용하시고 싶으시면, 명령어 뒤에 \"_m\" 을 붙이십시오.");
         System.out.println("1. 항목 추가 ( add )");
         System.out.println("2. 항목 삭제 ( del )");
         System.out.println("3. 항목 수정 ( edit )");
@@ -18,7 +17,10 @@ public class Menu {
         System.out.println("10. 최신순 정렬 ( ls_date_desc )");
         System.out.println("11. 키워드 검색 ( find <키워드> )");
         System.out.println("12. 카테고리 검색 ( find_cate <키워드> )");
-        System.out.println("13. 종료 ( exit )");
+        System.out.println("13. JSON으로 내보내기 ( make_JSON <파일 이름> )");
+        System.out.println("14. JSON에서 가져오기 ( get_JSON <파일 이름> )");
+        System.out.println("15. 종료 ( exit )\n");
+        System.out.println("System: Multi-item 기능을 사용하시고 싶으시면, 명령어 뒤에 \"_m\" 을 붙이십시오.\n");
     }
     public static void prompt() {
     	System.out.print("\n명령어 입력 >>");
