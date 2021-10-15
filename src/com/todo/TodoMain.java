@@ -35,6 +35,18 @@ public class TodoMain {
 				TodoUtil.updateItem(l);
 				break;
 				
+			case "add_m":
+				TodoUtil.createItem_m(l);
+				break;
+			
+			case "del_m":
+				TodoUtil.deleteItem_m(l);
+				break;
+				
+			case "edit_m":
+				TodoUtil.updateItem_m(l);
+				break;
+				
 			case "ls":
 				TodoUtil.listAll(l);
 				break;
@@ -69,6 +81,14 @@ public class TodoMain {
 				
 			case "ls_cate":
 				TodoUtil.listCate(l);
+				break;
+			
+			case "complete":
+				TodoUtil.manageCompletion(l);
+				break;
+				
+			case "complete_m":
+				TodoUtil.manageCompletion_m(l);
 				break;
 			
 			case "exit":
