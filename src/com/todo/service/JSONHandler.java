@@ -33,7 +33,6 @@ public class JSONHandler {
 		try {
 			Gson gson = new Gson();
 			BufferedReader br = new BufferedReader(new FileReader(fileName));
-
 			JsonArray array = JsonParser.parseString(br.readLine()).getAsJsonArray();
 			TodoList list = new TodoList();
 			for (JsonElement jElement : array) {

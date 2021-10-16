@@ -10,16 +10,18 @@ public class Menu {
         System.out.println("3. 항목 수정 ( edit )");
         System.out.println("4. 완료 관리 ( complete )");
         System.out.println("5. 전체 목록 ( ls )");
-        System.out.println("6. 카테고리 목록 ( ls_cate )");
-        System.out.println("7. 제목순 정렬 ( ls_name_asc )");
-        System.out.println("8. 제목역순 정렬 ( ls_name_desc )");
-        System.out.println("9. 날짜순 정렬 ( ls_date )");
-        System.out.println("10. 최신순 정렬 ( ls_date_desc )");
-        System.out.println("11. 키워드 검색 ( find <키워드> )");
-        System.out.println("12. 카테고리 검색 ( find_cate <키워드> )");
-        System.out.println("13. JSON으로 내보내기 ( make_JSON <파일 이름> )");
-        System.out.println("14. JSON에서 가져오기 ( get_JSON <파일 이름> )");
-        System.out.println("15. 종료 ( exit )\n");
+        System.out.println("6. 완료 목록 ( ls_comp )");
+        System.out.println("7. 미완료 목록 ( ls_ncomp )");
+        System.out.println("8. 카테고리 목록 ( ls_cate )");
+        System.out.println("9. 제목순 정렬 ( ls_name_asc )");
+        System.out.println("10. 제목역순 정렬 ( ls_name_desc )");
+        System.out.println("11. 날짜순 정렬 ( ls_date )");
+        System.out.println("12. 최신순 정렬 ( ls_date_desc )");
+        System.out.println("13. 키워드 검색 ( find <키워드> )");
+        System.out.println("14. 카테고리 검색 ( find_cate <키워드> )");
+        System.out.println("15. JSON으로 내보내기 ( make_JSON <파일 이름> )");
+        System.out.println("16. JSON에서 가져오기 ( get_JSON <파일 이름> )");
+        System.out.println("17. 종료 ( exit )\n");
         System.out.println("System: Multi-item 기능을 사용하시고 싶으시면, 명령어 뒤에 \"_m\" 을 붙이십시오.\n");
     }
     public static void prompt() {

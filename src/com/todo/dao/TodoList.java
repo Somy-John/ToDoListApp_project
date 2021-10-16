@@ -146,7 +146,7 @@ public class TodoList {
 				String location = rs.getString("location");
 				String with = rs.getString("with");
 				boolean isComplete = rs.getBoolean("isComplete");
-				TodoItem t = new TodoItem(title, description, category, due_date, location, with, isComplete);
+				TodoItem t = new TodoItem( title, description, category, due_date, location, with, isComplete);
 				t.setId(id);
 				t.setCurrent_date(current_date);
 				list.add(t);
@@ -198,6 +198,35 @@ public class TodoList {
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				list.add(rs.getString("category"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public ArrayList<TodoItem> getComp(boolean comp) {
+		ArrayList<TodoItem> list = new ArrayList<TodoItem>();
+		PreparedStatement pstmt;
+		try {
+			String sql = "SELECT * FROM list WHERE isComplete = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setBoolean(1, comp);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String title = rs.getString("title");
+				String description = rs.getString("memo");
+				String category = rs.getString("category");
+				String due_date = rs.getString("due_date");
+				String current_date = rs.getString("current_date");
+				String location = rs.getString("location");
+				String with = rs.getString("with");
+				boolean isComplete = rs.getBoolean("isComplete");
+				TodoItem t = new TodoItem(title, description, category, due_date, location, with, isComplete);
+				t.setId(id);
+				t.setCurrent_date(current_date);
+				list.add(t);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

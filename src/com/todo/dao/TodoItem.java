@@ -15,7 +15,7 @@ public class TodoItem {
     private int id;
 
 
-    public TodoItem(String title, String desc,String category,String due_date, String location, String with, boolean isComplete){
+    public TodoItem(String title, String desc,String category, String due_date, String location, String with, boolean isComplete){
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     	this.setCategory(category);
         this.title=title;
@@ -26,7 +26,7 @@ public class TodoItem {
         this.with=with;
         this.isComplete=isComplete;
     }
-    public TodoItem(String title, String desc,String category,String due_date, String location, String with){
+    public TodoItem(String title, String desc, String category, String due_date, String location, String with){
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     	this.setCategory(category);
         this.title=title;
@@ -36,7 +36,7 @@ public class TodoItem {
         this.location=location;
         this.with=with;
     }
-    public TodoItem(String title, String desc,String category,String due_date, String current_date, String location, String with, boolean isComplete){
+    public TodoItem(String title, String desc, String category, String due_date, String current_date, String location, String with, boolean isComplete){
     	this.setCategory(category);
         this.title=title;
         this.desc=desc;
@@ -73,7 +73,7 @@ public class TodoItem {
     
     @Override
     public String toString() {
-    	return id+" [" + category + "] "+ title + " / "+ (isComplete ? "완료" : "미완료")+" - "+ desc +" - "+ with + " - " + location +" - "+due_date + " - " + current_date;
+    	return id+" [" + category + "] "+ title + (isComplete ? "[O]" : "")+" - "+ desc +" - "+ with + " - " + location +" - "+due_date + " - " + current_date;
     }
 
 	public String getCategory() {

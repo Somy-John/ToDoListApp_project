@@ -39,7 +39,7 @@ public class TodoUtil {
 		String with = sc.nextLine().trim();
 		TodoItem t = new TodoItem(category, title, desc, due_date, location, with);
 		if (l.addItem(t) > 0)
-			System.out.println("추가되었습니다.");
+			System.out.println("System: 추가되었습니다.");
 	}
 
 	public static void createItem_m(TodoList l) {
@@ -51,7 +51,7 @@ public class TodoUtil {
 		int num = sc.nextInt();
 
 		for (int i = 0; i < num; i++) {
-			System.out.println("System: " + num + "개 중 " + (i + 1) + "번 째\n");
+			System.out.println("\n- " + num + "개 중 " + (i + 1) + "번째");
 			System.out.println("카테고리 >> ");
 			String category = sc.next().trim();
 			sc.nextLine();
@@ -73,7 +73,7 @@ public class TodoUtil {
 			String with = sc.nextLine().trim();
 			TodoItem t = new TodoItem(category, title, desc, due_date, location, with);
 			if (l.addItem(t) > 0)
-				System.out.println("추가되었습니다.");
+				System.out.println("System: 추가되었습니다.");
 		}
 	}
 
@@ -232,9 +232,27 @@ public class TodoUtil {
 			System.out.println(item.toString());
 		}
 	}
+	
+	public static void listComp(TodoList l) {
+		System.out.println("");
+		ArrayList<TodoItem> list = l.getComp(true);
+		System.out.printf("<완료 목록, 총 %d개>\n", list.size());
+		for (TodoItem item : list) {
+			System.out.println(item.toString());
+		}
+	}
+	
+	public static void listNcomp(TodoList l) {
+		System.out.println("");
+		ArrayList<TodoItem> list = l.getComp(false);
+		System.out.printf("<미완료 목록, 총 %d개>\n", list.size());
+		for (TodoItem item : list) {
+			System.out.println(item.toString());
+		}
+	}
 
 	public static void listAll(TodoList l, String orderby, int ordering) {
-		System.out.printf("[전체 목록, 총 %d개]\n", l.getCount());
+		System.out.printf("<전체 목록, 총 %d개>\n", l.getCount());
 		for (TodoItem item : l.getOrderedList(orderby, ordering)) {
 			System.out.println(item.toString());
 		}

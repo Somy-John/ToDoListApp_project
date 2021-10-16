@@ -51,6 +51,14 @@ public class TodoMain {
 			case "ls":
 				TodoUtil.listAll(l);
 				break;
+				
+			case "ls_comp":
+				TodoUtil.listComp(l);
+				break;
+				
+			case "ls_ncomp":
+				TodoUtil.listNcomp(l);
+				break;
 
 			case "ls_name_asc":
 				System.out.println("\nSystem: 제목순으로 정렬하였습니다.");
